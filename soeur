@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11100e">
+  <title>Joyeux anniversaire, Grande Sœur ❤️</title>
+
+  <style>
+    :root {
+      --black: #11100e;
+      --gold: #d5b56e;
+      --gold-light: #f2dfad;
+      --ivory: #f7f0e2;
+      --muted: #d2c8b5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ivory);
+      background:
+        radial-gradient(ellipse at 50% 0%, #49391c 0%, transparent 45%),
+        linear-gradient(145deg, #0b0b0a, #1a1711 55%, #090909);
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+    }
+
+    .ornament {
+      position: fixed;
+      inset: 14px;
+      border: 1px solid #d5b56e45;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "✦";
+      position: absolute;
+      color: var(--gold);
+      font-size: 16px;
+      background: var(--black);
+      padding: 0 8px;
+    }
+
+    .ornament::before {
+      top: -9px;
+      left: 24px;
+    }
+
+    .ornament::after {
+      bottom: -9px;
+      right: 24px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 28px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      animation: rise 1.2s ease both;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font: 11px/1.8 Arial, sans-serif;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+
+    .emblem {
+      font-size: 42px;
+      margin: 26px 0 20px;
+      color: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.7rem, 9vw, 5.7rem);
+      line-height: 1.06;
+      font-weight: 400;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--gold);
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    .hero-copy {
+      max-width: 510px;
+      margin: 28px auto 32px;
+      color: var(--muted);
+      font: 14px/1.9 Arial, sans-serif;
+    }
+
+    .gold-line {
+      width: 90px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--gold);
+      padding: 15px 23px;
+      color: #17130b;
+      background: var(--gold);
+      text-decoration: none;
+      font: 12px Arial, sans-serif;
+      letter-spacing: .07em;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .hint {
+      color: #a99b80;
+      font: 11px Arial, sans-serif;
+      margin-top: 20px;
+    }
+
+    .letter-section {
+      padding: 30px 18px 80px;
+      display: none;
+    }
+
+    .letter-section.open {
+      display: block;
+      animation: rise .8s ease both;
+    }
+
+    .letter {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(25px, 6vw, 60px);
+      background: linear-gradient(145deg, #211e18, #141310);
+      border: 1px solid #b99a584f;
+      box-shadow: 0 25px 80px #0008;
+      position: relative;
+    }
+
+    .letter::before {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 70px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+    }
+
+    .letter h2 {
+      color: var(--gold-light);
+      font-size: clamp(1.5rem, 5vw, 2.4rem);
+      line-height: 1.5;
+      text-align: center;
+      font-weight: 400;
+      margin: 0 0 35px;
+    }
+
+    .letter p {
+      color: #e7dfd0;
+      font: 15px/2 Arial, Helvetica, sans-serif;
+      margin: 0 0 23px;
+    }
+
+    .letter strong {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .back {
+      display: flex;
+      margin: 30px auto 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 18px 40px;
+      color: #b7a77f;
+      font: 10px Arial, sans-serif;
+      letter-spacing: .2em;
+    }
+
+    .float {
+      position: fixed;
+      z-index: 4;
+      bottom: -30px;
+      pointer-events: none;
+      animation: float-up 6s linear forwards;
+      opacity: 0;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+      }
+      15% {
+        opacity: .9;
+      }
+      85% {
+        opacity: .75;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 50px 24px;
+      }
+
+      .eyebrow {
+        letter-spacing: .15em;
+      }
+
+      .letter {
+        padding: 28px 20px;
+      }
+
+      .letter p {
+        font-size: 14px;
+        line-height: 1.9;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ornament" aria-hidden="true"></div>
+
+  <main>
+
+    <!-- PAGE D'ACCUEIL -->
+    <section class="hero" id="accueil">
+
+      <div class="hero-inner">
+
+        <div class="eyebrow">
+          Une journée précieuse · Une personne inoubliable
+        </div>
+
+        <div class="emblem" aria-hidden="true">
+          ✦ ♡ ✦
+        </div>
+
+        <h1>
+          Joyeux anniversaire
+          <span>Grande Sœur</span>
+        </h1>
+
+        <div class="gold-line"></div>
+
+        <p class="hero-copy">
+          Aujourd’hui, nous célébrons une femme exceptionnelle,
+          un pilier, un trésor et une bénédiction. Cette petite surprise
+          est remplie d’amour, de reconnaissance et de tendresse.
+        </p>
+
+        <button class="btn" id="openLetter" type="button">
+          Découvrir ta lettre <span>♡</span>
+        </button>
+
+        <div class="hint">
+          Une lettre écrite avec tout mon cœur
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- LETTRE D'ANNIVERSAIRE -->
+    <section
+      class="letter-section"
+      id="lettre"
+      aria-label="Lettre d'anniversaire"
+    >
+
+      <article class="letter">
+
+        <h2>❤️🎂 **JOYEUX ANNIVERSAIRE À MA GRANDE SŒUR CHÉRIE, MON PILIER, MON TRÉSOR !** 🎂❤️</h2>
+
+        <p>Ma grande sœur adorée, en ce jour si spécial où la vie célèbre ta naissance, je veux prendre un instant pour te dire combien tu comptes pour moi. Tu es bien plus qu’une sœur : tu es une bénédiction dans ma vie, une épaule sur laquelle je peux m’appuyer, une lumière qui m’éclaire dans les moments sombres et une présence précieuse qui me rappelle que je ne suis jamais seul.</p>
+
+        <p>Tu fais partie de ces personnes rares qui restent présentes quand les choses deviennent difficiles, qui trouvent les mots pour consoler un cœur triste et qui donnent de la force sans rien attendre en retour. Ta présence dans ma vie est un cadeau que les mots ne suffiront jamais à décrire. ❤️</p>
+
+        <p><strong>Grande sœur, merci d’être toujours là pour moi.</strong> Merci pour ton amour, tes conseils, ta patience, ton soutien et toutes ces petites attentions qui ont une immense valeur à mes yeux. Peut-être que je ne te le dis pas assez souvent, mais sache que je n’oublie rien de ce que tu fais pour moi. Chaque geste, chaque parole et chaque moment où tu m’as soutenu occupent une place particulière dans mon cœur.</p>
+
+        <p>En ce jour d’anniversaire, je demande au Seigneur de te combler de bénédictions, de protéger tes pas, de te donner une santé solide, une paix profonde et un bonheur qui ne s’éteint jamais. Que toutes les larmes que tu as versées en silence soient remplacées par des sourires, que tes sacrifices portent de beaux fruits et que les portes que tu attends depuis longtemps s’ouvrent enfin devant toi.</p>
+
+        <p>Tu mérites d’être aimée autant que tu aimes, soutenue autant que tu soutiens et heureuse autant que tu contribues au bonheur des autres. Que cette nouvelle année de ta vie soit remplie de belles surprises, de réussites, d’amour sincère et de moments inoubliables. 🙏🏽❤️</p>
+
+        <p><strong>Joyeux anniversaire, ma grande sœur chérie !</strong> Si je pouvais te faire un seul cadeau, ce serait de te permettre de voir à travers mes yeux la place immense que tu occupes dans mon cœur. Tu comprendrais alors pourquoi ta présence est si précieuse pour moi et pourquoi je remercie Dieu de t’avoir placée sur mon chemin.</p>
+
+        <p>Quoi qu’il arrive, sache que tu resteras toujours ma grande sœur, une personne irremplaçable, un repère dans ma vie et un trésor que je garderai précieusement dans mon cœur.</p>
+
+        <p>Je t’aime profondément, ma sœur. Que Dieu te garde encore de longues années auprès de nous, afin que nous puissions continuer à partager les joies, à surmonter les épreuves et à écrire ensemble de magnifiques pages de notre histoire.</p>
+
+        <p><strong>Joyeux anniversaire à la sœur au grand cœur, à celle qui ne m’abandonne pas, à celle qui est toujours là pour moi. Que la vie te rende au centuple tout le bien que tu fais autour de toi.</strong> ❤️🎂🌹</p>
+
+        <p>Avec tout mon amour, ma reconnaissance et ma tendresse, aujourd’hui et pour toujours. L'oncle des enfants Djhorty et Christencia 💖</p>
+
+        <div class="gold-line"></div>
+
+        <button class="btn back" id="backHome" type="button">
+          Revenir à l’accueil ↑
+        </button>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    FAIT AVEC AMOUR · POUR UNE SŒUR INOUBLIABLE ♡
+  </footer>
+
+  <script>
+    const openButton = document.getElementById("openLetter");
+    const backButton = document.getElementById("backHome");
+    const letterSection = document.getElementById("lettre");
+
+    openButton.addEventListener("click", () => {
+      letterSection.classList.add("open");
+      openButton.textContent = "Ta lettre est ouverte ♡";
+
+      letterSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      createHearts();
+    });
+
+    backButton.addEventListener("click", () => {
+      document.getElementById("accueil").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+      for (let i = 0; i < 24; i++) {
+        const item = document.createElement("span");
+
+        item.className = "float";
+        item.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.fontSize = (14 + Math.random() * 15) + "px";
+        item.style.animationDelay = (Math.random() * 1.8) + "s";
+        item.style.animationDuration =
+          (4.5 + Math.random() * 2.5) + "s";
+
+        item.style.color =
+          Math.random() > 0.5 ? "#d5b56e" : "#f2dfad";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => {
+          item.remove();
+        }, 8000);
+      }
+    }
+  </script>
+
+</body>
+</html>
